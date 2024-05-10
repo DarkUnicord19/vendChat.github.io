@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vending Machine Catalogue</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ccc;
+        }
+        .item:last-child {
+            border-bottom: none;
+        }
+        .item input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #totalCost {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Vending Machine Catalogue</h1>
+        <div class="items">
+            <div class="item">
+                <input type="checkbox" id="item1" value="1.50">
+                <label for="item1">Soda - $1.50</label>
+            </div>
+            <div class="item">
+                <input type="checkbox" id="item2" value="2.00">
+                <label for="item2">Chips - $2.00</label>
+            </div>
+            <div class="item">
+                <input type="checkbox" id="item3" value="1.00">
+                <label for="item3">Candy Bar - $1.00</label>
+            </div>
+            <!-- Add more items here -->
+        </div>
+        <button onclick="calculateTotal()">Calculate Total Cost</button>
+        <div id="totalCost"></div>
+    </div>
+
+    <script>
+        function calculateTotal() {
+            var totalCost = 0;
+            var items = document.querySelectorAll('.item input[type="checkbox"]:checked');
+            items.forEach(function(item) {
+                totalCost += parseFloat(item.value);
+            });
+            document.getElementById('totalCost').innerText = "Total Cost: $" + totalCost.toFixed(2);
+        }
+    </script>
+</body>
+</html>
